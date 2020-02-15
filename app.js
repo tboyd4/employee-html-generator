@@ -159,6 +159,7 @@ const createHtml = function () {
             <link rel="stylesheet" type="text/css" href="./display.css">
         </head>
         <body>
+            <h1 class="manager">Employee List</h1>
             ${output.join(`\n`)}
         </body>
         </html>
