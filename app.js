@@ -132,17 +132,27 @@ const createHtml = function () {
             );
         }
 
-        return (
-            showThis
-        );
+        return (showThis);
     })
 
+    let finalOutput = (`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>title</title>
+        </head>
+        <body>
+            ${output.join(`\n`)}
+        </body>
+        </html>
+    `)
 
 
-    fs.writeFile('./output/testlog.html', output.join(`\n`), (err) => {
+    fs.writeFile('./output/display.html', finalOutput, (err) => {
         if (err) {
             throw err
-        }  // **** Currently just writing the results into a text file in output dir **** //
+        } 
 
         console.log("test file writing success");
     })
