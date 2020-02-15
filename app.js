@@ -11,6 +11,7 @@ let employeeArray = [];
 // Three Functions that make each employee type ------------------------------------------------------------//
 const makeManager = function () {
     // creating the manager
+    console.log("Please begin by adding a mananger, `\n` and then add as many employees as you need");
     Inquirer.prompt([{
         message: "Manager Name",
         name: "managername"
@@ -28,9 +29,8 @@ const makeManager = function () {
         name: "managerofficenumber"
     }]).then(function (res) {
         const manager = new Manager(res.managername, res.employeeid, res.manageremail, res.managerofficenumber);
-        console.log(manager);
+        console.log(`${res.managername} added successfully as a Manager`);
         employeeArray.push(manager);
-        console.log(employeeArray);
         goAgain();
     });
 }
@@ -54,9 +54,8 @@ const makeEngineer = function () {
             name: "enggit"
         }]).then(function (res) {
             const engineer = new Engineer(res.engname, res.employeeid, res.employeeemail, res.enggit);
-            console.log(engineer);
+            console.log(`${res.engname} added successfully as an Engineer`);
             employeeArray.push(engineer);
-            console.log(employeeArray);
             goAgain();
         });
 }
@@ -80,14 +79,13 @@ const makeIntern = function () {
         name: "intschool"
     }]).then(function (res) {
         const intern = new Intern(res.intname, res.employeeid, res.employeeemail, res.intschool);
-        console.log(intern);
+        console.log(`${res.intname} added successfully as an Intern`);
         employeeArray.push(intern);
-        console.log(employeeArray);
         goAgain();
     });
 }
 //----------------------------------------------------------------------------------------------------------//
-/////////
+/////////////////////////////////////////////
 // Logic that will control user experience //
 // V V V V V V V V V V V V V V V V V V V V //
 
@@ -112,13 +110,24 @@ const goAgain = function () {
     })
 }
 
+// this function will run when they're done adding employees
+
 const createHtml = function () {
-    console.log("FINAL ARRAY HERE : " + JSON.stringify(employeeArray));
+    fs.writeFile('./output/testlog.txt', JSON.stringify(employeeArray), (err) => {
+        if (err) {
+            throw err
+        }  // **** Currently just writing the results into a text file in output dir **** //
+
+        console.log("test file writing success");
+    })
 }
 
 
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& // 
 
 
+
+// this is the starting point of the app.js file, and runs the whole code line
 makeManager();
 
 
