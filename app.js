@@ -8,8 +8,7 @@ const fs = require('fs');
 // array that will hold our objects (employees)
 let employeeArray = [];
 
-// function that will run initial inquirer prompt. Function will create one manager, and one engineer, the min
-
+// Three Functions that make each employee type ------------------------------------------------------------//
 const makeManager = function () {
     // creating the manager
     Inquirer.prompt([{
@@ -56,5 +55,28 @@ const makeEngineer = function () {
         });
 }
 
-// makeManager();
-// makeEngineer();
+const makeIntern = function () {
+    // creating an intern
+    Inquirer.prompt([{
+        message: "Intern Name",
+        name: "intname"
+    },
+    {
+        message: "Employee ID",
+        name: "employeeid"
+    },
+    {
+        message: "Employee Email",
+        name: "employeeemail"
+    },
+    {
+        message: "Intern School",
+        name: "intschool"
+    }]).then(function (res) {
+        const intern = new Intern(res.intname, res.employeeid, res.employeeemail, res.intschool);
+        console.log(intern);
+    });
+}
+//----------------------------------------------------------------------------------------------------------//
+
+
