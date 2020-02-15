@@ -1,5 +1,16 @@
+.header {
+    background-color: lightgoldenrodyellow;
+    width: 60%;
+    margin: auto;
+    font-size: 18px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    box-shadow: darkgray 0 1px 2px;
+}
+
 .manager {
-    background-color: darkgray;
+    background-color: lightblue;
     width: 60%;
     margin: auto;
     font-size: 18px;
@@ -11,7 +22,7 @@
 }
 
 .employee {
-    background-color: darkgray;
+    background-color: salmon;
     width: 60%;
     margin: auto;
     font-size: 16px;

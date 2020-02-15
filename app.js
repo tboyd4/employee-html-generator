@@ -11,7 +11,7 @@ let employeeArray = [];
 // Three Functions that make each employee type ------------------------------------------------------------//
 const makeManager = function () {
     // creating the manager
-    console.log("Please begin by adding a mananger, \n and then add as many employees as you need");
+    console.log("!!!! START BY ADDING A MANAGER !!!!\n!!!! THEN ADD AS MANY EMPLOYEES AS NEEDED !!!!");
     Inquirer.prompt([{
         message: "Manager Name",
         name: "managername"
@@ -94,11 +94,11 @@ const makeIntern = function () {
 const goAgain = function () {
     Inquirer.prompt({
         type: "list",
-        message: "Choose next step",
+        message: "Do you need to add another employee?",
         choices: ['Add Engineer', 'Add Intern', 'Done Adding Employees'],
         name: "choice"
     }).then(function(res) {
-        console.log(res.choice);
+        
 
         if (res.choice === 'Add Engineer') {
             makeEngineer();
@@ -121,28 +121,28 @@ const createHtml = function () {
         if (employee.getRole() === 'Manager') {
             showThis = (`
                 <div class="manager">
-                    <h1>Manager Name -- ${employee.name}</h1>
-                    <h2>Employee ID -- ${employee.id}</h2>
-                    <h2>Employee Email -- ${employee.email}</h2>
-                    <h2>Office Number -- ${employee.getOfficeNumber()}</h2>
+                    <h1>Manager Name: ${employee.name}</h1>
+                    <h2>Employee ID: ${employee.id}</h2>
+                    <h2>Employee Email: ${employee.email}</h2>
+                    <h2>Office Number: ${employee.getOfficeNumber()}</h2>
                 </div>
             `);
         } else if (employee.getRole() === 'Engineer') {
             showThis = (`
             <div class="employee">
-                <h1>Engineer Name -- ${employee.name}</h1>
-                <h2>Employee ID -- ${employee.id}</h2>
-                <h2>Employee Email -- ${employee.email}</h2>
-                <h2>GitHub User Name -- ${employee.getGitHub()}</h2>
+                <h1>Engineer Name: ${employee.name}</h1>
+                <h2>Employee ID: ${employee.id}</h2>
+                <h2>Employee Email: ${employee.email}</h2>
+                <h2>GitHub User Name: ${employee.getGitHub()}</h2>
             </div>
         `);         
         } else if (employee.getRole() === 'Intern') {
             showThis = (`
                 <div class="employee">
-                    <h1>Intern Name -- ${employee.name}</h1>
-                    <h2>Employee ID -- ${employee.id}</h2>
-                    <h2>Employee Email -- ${employee.email}</h2>
-                    <h2>Intern's School -- ${employee.getSchool()}</h2>
+                    <h1>Intern Name: ${employee.name}</h1>
+                    <h2>Employee ID: ${employee.id}</h2>
+                    <h2>Employee Email: ${employee.email}</h2>
+                    <h2>Intern's School: ${employee.getSchool()}</h2>
                 </div>
             `);         
         }
@@ -155,11 +155,11 @@ const createHtml = function () {
         <html>
         <head>
             <meta charset="UTF-8">
-            <title>title</title>
+            <title>Employee List</title>
             <link rel="stylesheet" type="text/css" href="./display.css">
         </head>
         <body>
-            <h1 class="manager">Employee List</h1>
+            <h1 class="header">Employee List</h1>
             ${output.join(`\n`)}
         </body>
         </html>
@@ -171,7 +171,7 @@ const createHtml = function () {
             throw err
         } 
 
-        console.log("test file writing success");
+        console.log("!!!! ALL EMPLOYEES ADDED !!!!");
     })
 }
 
