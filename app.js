@@ -113,7 +113,35 @@ const goAgain = function () {
 // this function will run when they're done adding employees
 
 const createHtml = function () {
-    fs.writeFile('./output/testlog.txt', JSON.stringify(employeeArray), (err) => {
+
+    let output = employeeArray.map(employee => {
+
+        let showThis = '';
+
+        if (employee.getRole() === 'Manager') {
+            showThis = (
+                employee.name + ' ' + employee.id + ' ' + employee.email + ' ' + employee.getOfficeNumber() + `\n`
+            );
+        } else if (employee.getRole() === 'Engineer') {
+            showThis = (
+                employee.name + ' ' + employee.id + ' ' + employee.email + ' ' + employee.getGitHub() + `\n`
+            );
+        } else if (employee.getRole() === 'Intern') {
+            showThis = (
+                employee.name + ' ' + employee.id + ' ' + employee.email + ' ' + employee.getSchool() + `\n`
+            );
+        }
+
+        return (
+            showThis
+        );
+    })
+
+
+
+
+
+    fs.writeFile('./output/testlog.txt', output, (err) => {
         if (err) {
             throw err
         }  // **** Currently just writing the results into a text file in output dir **** //
