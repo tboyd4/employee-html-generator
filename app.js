@@ -119,17 +119,32 @@ const createHtml = function () {
         let showThis = '';
 
         if (employee.getRole() === 'Manager') {
-            showThis = (
-                `<h1 class="manager">Manager : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} Office Number: ${employee.getOfficeNumber()}</h1>`
-            );
+            showThis = (`
+                <div class="manager">
+                    <h1>Manager Name -- ${employee.name}</h1>
+                    <h2>Employee ID -- ${employee.id}</h2>
+                    <h2>Employee Email -- ${employee.email}</h2>
+                    <h2>Office Number -- ${employee.getOfficeNumber()}</h2>
+                </div>
+            `);
         } else if (employee.getRole() === 'Engineer') {
-            showThis = (
-                `<h2 class="employee">Engineer : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} GitHub UserName: ${employee.getGitHub()}</h2>`
-            );
+            showThis = (`
+            <div class="employee">
+                <h1>Engineer Name -- ${employee.name}</h1>
+                <h2>Employee ID -- ${employee.id}</h2>
+                <h2>Employee Email -- ${employee.email}</h2>
+                <h2>GitHub User Name -- ${employee.getGitHub()}</h2>
+            </div>
+        `);         
         } else if (employee.getRole() === 'Intern') {
-            showThis = (
-                `<h2 class="employee">Intern : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} School Name: ${employee.getSchool()}</h2>`
-            );
+            showThis = (`
+                <div class="employee">
+                    <h1>Intern Name -- ${employee.name}</h1>
+                    <h2>Employee ID -- ${employee.id}</h2>
+                    <h2>Employee Email -- ${employee.email}</h2>
+                    <h2>Intern's School -- ${employee.getSchool()}</h2>
+                </div>
+            `);         
         }
 
         return (showThis);
