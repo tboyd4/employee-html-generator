@@ -11,7 +11,7 @@ let employeeArray = [];
 // Three Functions that make each employee type ------------------------------------------------------------//
 const makeManager = function () {
     // creating the manager
-    console.log("Please begin by adding a mananger, `\n` and then add as many employees as you need");
+    console.log("Please begin by adding a mananger, \n and then add as many employees as you need");
     Inquirer.prompt([{
         message: "Manager Name",
         name: "managername"
@@ -120,15 +120,15 @@ const createHtml = function () {
 
         if (employee.getRole() === 'Manager') {
             showThis = (
-                employee.name + ' ' + employee.id + ' ' + employee.email + ' ' + employee.getOfficeNumber() + `\n`
+                `<h1>Manager : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} Office Number: ${employee.getOfficeNumber()}</h1>`
             );
         } else if (employee.getRole() === 'Engineer') {
             showThis = (
-                employee.name + ' ' + employee.id + ' ' + employee.email + ' ' + employee.getGitHub() + `\n`
+                `<h2>Engineer : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} GitHub UserName: ${employee.getGitHub()}</h2>`
             );
         } else if (employee.getRole() === 'Intern') {
             showThis = (
-                employee.name + ' ' + employee.id + ' ' + employee.email + ' ' + employee.getSchool() + `\n`
+                `<h2>Intern : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} School Name: ${employee.getSchool()}</h2>`
             );
         }
 
@@ -139,7 +139,7 @@ const createHtml = function () {
 
 
 
-    fs.writeFile('./output/testlog.txt', output, (err) => {
+    fs.writeFile('./output/testlog.html', output.join(`\n`), (err) => {
         if (err) {
             throw err
         }  // **** Currently just writing the results into a text file in output dir **** //
