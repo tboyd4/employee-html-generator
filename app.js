@@ -29,6 +29,9 @@ const makeManager = function () {
     }]).then(function (res) {
         const manager = new Manager(res.managername, res.employeeid, res.manageremail, res.managerofficenumber);
         console.log(manager);
+        employeeArray.push(manager);
+        console.log(employeeArray);
+        goAgain();
     });
 }
 
@@ -52,6 +55,9 @@ const makeEngineer = function () {
         }]).then(function (res) {
             const engineer = new Engineer(res.engname, res.employeeid, res.employeeemail, res.enggit);
             console.log(engineer);
+            employeeArray.push(engineer);
+            console.log(employeeArray);
+            goAgain();
         });
 }
 
@@ -75,8 +81,48 @@ const makeIntern = function () {
     }]).then(function (res) {
         const intern = new Intern(res.intname, res.employeeid, res.employeeemail, res.intschool);
         console.log(intern);
+        employeeArray.push(intern);
+        console.log(employeeArray);
+        goAgain();
     });
 }
 //----------------------------------------------------------------------------------------------------------//
+/////////
+// Logic that will control user experience //
+// V V V V V V V V V V V V V V V V V V V V //
+
+// function that asks user if they want to add another employee, and then runs the appropriate function
+
+const goAgain = function () {
+    Inquirer.prompt({
+        type: "list",
+        message: "Choose next step",
+        choices: ['Add Engineer', 'Add Intern', 'Done Adding Employees'],
+        name: "choice"
+    }).then(function(res) {
+        console.log(res.choice);
+
+        if (res.choice === 'Add Engineer') {
+            makeEngineer();
+        } else if (res.choice === 'Add Intern') {
+            makeIntern();
+        } else {
+            createHtml();
+        }
+    })
+}
+
+const createHtml = function () {
+    console.log("FINAL ARRAY HERE : " + JSON.stringify(employeeArray));
+}
+
+
+
+
+makeManager();
+
+
+
+
 
 
