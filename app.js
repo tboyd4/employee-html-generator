@@ -120,15 +120,15 @@ const createHtml = function () {
 
         if (employee.getRole() === 'Manager') {
             showThis = (
-                `<h1>Manager : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} Office Number: ${employee.getOfficeNumber()}</h1>`
+                `<h1 class="manager">Manager : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} Office Number: ${employee.getOfficeNumber()}</h1>`
             );
         } else if (employee.getRole() === 'Engineer') {
             showThis = (
-                `<h2>Engineer : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} GitHub UserName: ${employee.getGitHub()}</h2>`
+                `<h2 class="employee">Engineer : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} GitHub UserName: ${employee.getGitHub()}</h2>`
             );
         } else if (employee.getRole() === 'Intern') {
             showThis = (
-                `<h2>Intern : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} School Name: ${employee.getSchool()}</h2>`
+                `<h2 class="employee">Intern : Name: ${employee.name} ID: ${employee.id} Email: ${employee.email} School Name: ${employee.getSchool()}</h2>`
             );
         }
 
@@ -141,6 +141,7 @@ const createHtml = function () {
         <head>
             <meta charset="UTF-8">
             <title>title</title>
+            <link rel="stylesheet" type="text/css" href="./display.css">
         </head>
         <body>
             ${output.join(`\n`)}
