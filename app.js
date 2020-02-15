@@ -139,8 +139,6 @@ const createHtml = function () {
 
 
 
-
-
     fs.writeFile('./output/testlog.txt', output, (err) => {
         if (err) {
             throw err
